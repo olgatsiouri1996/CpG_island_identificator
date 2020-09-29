@@ -1,5 +1,8 @@
 # python3
 import argparse
+from Bio.Seq import Seq, MutableSeq
+from Bio import Alphabet
+from Bio.Data import IUPACData
 from Bio import SeqIO
 import pandas as pd
 # input parameters
