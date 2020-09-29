@@ -37,7 +37,7 @@ df = pd.DataFrame()
 df['id'] = headers
 df['obs'] = gcobs
 df['exp'] = gcexp
-df['obs/exp'] = df['obs']/df['exp']
+df['obs/exp'] = round(df['obs']/df['exp'], 2)
 df = df[df['exp'] > 0]
 df = df[df['obs/exp'] > float(args['gc_ratio'])]
 df = df.sort_values(by=['obs/exp'], ascending=False)
