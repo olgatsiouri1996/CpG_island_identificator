@@ -34,7 +34,7 @@ for record in SeqIO.parse(args['input_file'], "fasta"):
        headers.append(record.id)
 # create data frame
 df = pd.DataFrame()
-df['id'] = headers
+df['start'] = headers
 df['obs'] = gcobs
 df['exp'] = gcexp
 df['obs/exp'] = round(df['obs']/df['exp'], 2)
