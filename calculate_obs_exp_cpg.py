@@ -18,7 +18,8 @@ def exp(seq):
   return round(seq.count('C') * seq.count('G') / int(args['window_size']))
 # calculate gc content
 def gc_content(seq):
-  return round((seq.count('C') + seq.count('G')) / (seq.count('C') + seq.count('G') + seq.count('A') + seq.count('T')) * 100, 2)
+    gc = sum(seq.count(x) for x in ["G", "C", "S"])
+    return round(gc * 100 / sum(seq.count(x) for x in ["A", "T", "G", "C", "S", "W"]), 2)
 # main
 gcobs = []
 gcexp = []
@@ -34,11 +35,21 @@ df['id'] = headers
 df['obs'] = gcobs
 df['exp'] = gcexp
 df['obs/exp'] = df['obs']/df['exp']
+df = df[df['exp'] > 0]
 df = df[df['obs/exp'] > float(args['gc_ratio'])]
 df = df.sort_values(by=['obs/exp'], ascending=False)
+df1 = pd.DataFrame()
+df1 = df.start.str.split("_", expand = True)
+start = df1.iloc[:, 1]
+end = start.astype(int) + int(args['window_size'])
+df2 = pd.DataFrame()
+df2['start'] = start
+df2['end'] = end
+df2['obs'] = df[["obs"]]
+df2['exp'] = df[["exp"]]
+df2['obs/exp'] = df[["obs/exp"]]
 # export
 with open(args['output_file'], 'a') as f:
     f.write(
-        df.to_string(header = True, index = False)
+        df2.to_csv(header = True, index = False, sep = '\t')
     )
-
