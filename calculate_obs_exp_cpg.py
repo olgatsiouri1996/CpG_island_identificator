@@ -18,7 +18,7 @@ def obs(seq):
   return round(seq.count('CG'))
 # calculate Exp value
 def exp(seq):
-  return round(seq.count('C') * seq.count('G') / int(args['window_size']))
+  return round(seq.count('C') * seq.count('G') / int(args['window_size']), 2)
 # calculate gc content
 def gc_content(seq):
     gc = sum(seq.count(x) for x in ["G", "C", "S"])
