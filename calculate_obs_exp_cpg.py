@@ -41,7 +41,6 @@ df['obs/exp'] = round(df['obs']/df['exp'], 2)
 df = df[df['exp'] > 0]
 df = df[df['obs/exp'] > float(args['gc_ratio'])]
 df = df.sort_values(by=['obs/exp'], ascending=False)
-df1 = pd.DataFrame()
 df1 = df['start'].astype(str).str.split("_", expand = True)
 start = df1.iloc[:, 1]
 end = start.astype(int) + int(args['window_size'])
