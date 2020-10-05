@@ -53,5 +53,5 @@ df2['obs/exp'] = df[["obs/exp"]]
 # export
 with open(args['output_file'], 'a') as f:
     f.write(
-        df2.to_csv(header = True, index = False, sep = '\t')
+        df2.to_csv(header = True, index = False, sep = '\t', line_terminator= '\n')
     )
