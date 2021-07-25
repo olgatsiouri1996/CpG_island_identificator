@@ -1,24 +1,24 @@
 # python3
 import argparse
 from Bio import SeqIO
-from Bio.Seq import Seq, MutableSeq
+from Bio.Seq import Seq, MutableSeq, reverse_complement
 from Bio.Data import IUPACData
 import pandas as pd
 # input parameters
 ap = argparse.ArgumentParser()
 ap.add_argument("-in", "--input_file", required=True, help="input fasta file")
-ap.add_argument("-gc", "--gc_content", required=True, help="min GC content(support for S and W nucleotides)")
-ap.add_argument("-ratio", "--gc_ratio", required=True, help="min ratio of the Obs/Exp value, type = float")
-ap.add_argument("-step", "--step_size", required=True, help="step size for CpG identification, type = int")
-ap.add_argument("-win", "--window_size", required=True, help="window size for CpG identification, type = int")
+ap.add_argument("-gc", "--gc_content",  required=False, default=50, help="min GC content(support for S and W nucleotides).Default= 50")
+ap.add_argument("-ratio", "--gc_ratio", required=False, default=0.6, help="min ratio of the Obs/Exp value, type = float. Default= 0.6")
+ap.add_argument("-step", "--step_size", required=True, help="step size for CpG identification, type = integer")
+ap.add_argument("-win", "--window_size", required=True, help="window size for CpG identification, type = integer")
 ap.add_argument("-out", "--output_file", required=True, help="output txt file")
 args = vars(ap.parse_args())
 # calculate obs value
 def obs(seq):
-  return seq.count('CG')
+    return seq.count('CG')
 # calculate Exp value
 def exp(seq):
-  return round(seq.count('C') * seq.count('G') / int(args['window_size']), 2)
+    return round(seq.count('C') * seq.count('G') / int(args['window_size']), 2)
 # calculate gc content
 def gc_content(seq):
     gc = sum(seq.count(x) for x in ["G", "C", "S"])
@@ -28,12 +28,17 @@ gcobs = []
 gcexp = []
 headers = [] # setup empty lists
 for record in SeqIO.parse(args['input_file'], "fasta"):
+    rev = reverse_complement(record.seq)
     for i in range(0, len(record.seq) - int(args['window_size']) + 1, int(args['step_size'])):
         if gc_content(record.seq[i:i + int(args['window_size'])]) > float(args['gc_content']):
-           gcobs.append(obs(record.seq[i:i + int(args['window_size'])]))
-           gcexp.append(exp(record.seq[i:i + int(args['window_size'])]))
-           headers.append(i)
-# create data frame
+            gcobs.append(obs(record.seq[i:i + int(args['window_size'])]))
+            gcexp.append(exp(record.seq[i:i + int(args['window_size'])]))
+            headers.append(i)
+        if gc_content(rev[i:i + int(args['window_size'])]) > float(args['gc_content']):
+            gcobs.append(obs(rev[i:i + int(args['window_size'])]))
+            gcexp.append(exp(rev[i:i + int(args['window_size'])]))
+            headers.append(i -len(record.seq))
+  # create data frame
 df = pd.DataFrame()
 df['start'] = headers
 df['obs'] = gcobs
