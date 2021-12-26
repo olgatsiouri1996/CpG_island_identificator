@@ -1,12 +1,13 @@
-# python3
+#!/usr/bin/python3
 import argparse
 from Bio import SeqIO
 from Bio.Seq import Seq, MutableSeq, reverse_complement
 from Bio.Data import IUPACData
 import pandas as pd
+pd.options.mode.chained_assignment = None
 # input parameters
 ap = argparse.ArgumentParser()
-ap.add_argument("-in", "--input_file", required=True, help="input fasta file")
+ap.add_argument("-in", "--input_file", required=True, help="input single-fasta file")
 ap.add_argument("-gc", "--gc_content",  required=False, default=50, help="min GC content(support for S and W nucleotides).Default= 50")
 ap.add_argument("-ratio", "--gc_ratio", required=False, default=0.6, help="min ratio of the Obs/Exp value, type = float. Default= 0.6")
 ap.add_argument("-step", "--step_size", required=True, help="step size for CpG identification, type = integer")
@@ -27,18 +28,18 @@ def gc_content(seq):
 gcobs = []
 gcexp = []
 headers = [] # setup empty lists
-for record in SeqIO.parse(args['input_file'], "fasta"):
-    rev = reverse_complement(record.seq)
-    for i in range(0, len(record.seq) - int(args['window_size']) + 1, int(args['step_size'])):
-        if gc_content(record.seq[i:i + int(args['window_size'])]) > float(args['gc_content']):
-            gcobs.append(obs(record.seq[i:i + int(args['window_size'])]))
-            gcexp.append(exp(record.seq[i:i + int(args['window_size'])]))
-            headers.append(i)
-        if gc_content(rev[i:i + int(args['window_size'])]) > float(args['gc_content']):
-            gcobs.append(obs(rev[i:i + int(args['window_size'])]))
-            gcexp.append(exp(rev[i:i + int(args['window_size'])]))
-            headers.append(i -len(record.seq))
-  # create data frame
+record = SeqIO.read(args['input_file'], "fasta")
+rev = reverse_complement(record.seq)
+for i in range(0, len(record.seq) - int(args['window_size']) + 1, int(args['step_size'])):
+    if gc_content(record.seq[i:i + int(args['window_size'])]) > float(args['gc_content']):
+        gcobs.append(obs(record.seq[i:i + int(args['window_size'])]))
+        gcexp.append(exp(record.seq[i:i + int(args['window_size'])]))
+        headers.append(i)
+    if gc_content(rev[i:i + int(args['window_size'])]) > float(args['gc_content']):
+        gcobs.append(obs(rev[i:i + int(args['window_size'])]))
+        gcexp.append(exp(rev[i:i + int(args['window_size'])]))
+        headers.append(i -len(record.seq))
+# create data frame
 df = pd.DataFrame()
 df['start'] = headers
 df['obs'] = gcobs
@@ -47,9 +48,11 @@ df['obs/exp'] = round(df['obs']/df['exp'], 2)
 df = df[df['exp'] > 0]
 df = df[df['obs/exp'] > float(args['gc_ratio'])]
 df = df.sort_values(by=['obs/exp'], ascending=False)
+df['ids'] = record.id
 start = df.iloc[:,0]
 end = start.astype(int) + int(args['window_size'])
 df1 = pd.DataFrame()
+df1 = df[["ids"]]
 df1['start'] = start
 df1['end'] = end
 df1['obs'] = df[["obs"]]
