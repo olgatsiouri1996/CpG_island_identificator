@@ -50,11 +50,11 @@ def main():
     df = df[df['exp'] > 0]
     df = df[df['obs/exp'] > float(args['ratio'])]
     df = df.sort_values(by=['obs/exp'], ascending=False)
-    df['ids'] = record.id
+    df['id'] = record.id
     start = df.iloc[:,0]
     end = start.astype(int) + int(args['window'])
     df1 = pd.DataFrame()
-    df1 = df[["ids"]]
+    df1 = df[["id"]]
     df1['start'] = start
     df1['end'] = end
     df1['obs'] = df[["obs"]]
