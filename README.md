@@ -1,7 +1,7 @@
 # CpG_island_identificator
 
 CpG island identification pipeline inspired by the  Gardiner-Garden and Frommer (1987) method   
-Windows grafical user interface standalone programs are avaliable here: 
+Windows grafical user interface standalone programs are avaliable here:   
 for 1 single-fasta file: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5806729.svg)](https://doi.org/10.5281/zenodo.5806729)  
 for many single-fasta files: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5807776.svg)](https://doi.org/10.5281/zenodo.5807776)
 
