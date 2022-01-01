@@ -1,4 +1,5 @@
-# CpG_island_identificator
+# CpG_island_identificator [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5812475.svg)](https://doi.org/10.5281/zenodo.5812475)
+
 
 CpG island identification pipeline inspired by the  Gardiner-Garden and Frommer (1987) method 
 
