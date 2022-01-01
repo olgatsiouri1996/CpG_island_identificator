@@ -34,5 +34,6 @@ The program gives 2 options:
 `cpg_island_identificator.py -in test.fasta -out cpg_table.txt -win 200 -step 1 -gc 55.00 -ratio 1.0`
 This script can be run also as GUI by running: `python3 cpg_island_identificator_gui.py` and a window will pop up
 
-The output file will look like:
+The output file will look like: 
+
 ![](img/example.png)
