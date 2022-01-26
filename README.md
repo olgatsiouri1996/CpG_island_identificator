@@ -1,5 +1,4 @@
-# CpG_island_identificator [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5812475.svg)](https://doi.org/10.5281/zenodo.5812475)
-
+# CpG_island_identificator 
 
 CpG island identification pipeline inspired by the  Gardiner-Garden and Frommer (1987) method 
 
@@ -8,6 +7,9 @@ CpG island identification pipeline inspired by the  Gardiner-Garden and Frommer 
 Windows grafical user interface standalone programs is avaliable here: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5812427.svg)](https://doi.org/10.5281/zenodo.5812427)
 
 ![](img/program_gui.png)
+
+# **Binaries**
+The binary files for the windows and linux command line programs can be found: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5907900.svg)](https://doi.org/10.5281/zenodo.5907900) (no depedences needed)
 
 # **Depedences**
 
