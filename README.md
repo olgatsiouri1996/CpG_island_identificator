@@ -4,7 +4,7 @@ CpG island identification pipeline inspired by the  Gardiner-Garden and Frommer 
 
 ![](img/arguments.png) 
 
-Windows grafical user interface standalone programs is avaliable here: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5812427.svg)](https://doi.org/10.5281/zenodo.5812427)
+Windows grafical user interface standalone programs is avaliable here
 
 ![](img/program_gui.png)
 
