@@ -1,4 +1,4 @@
-# CpG_island_identificator [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5908207.svg)](https://doi.org/10.5281/zenodo.5908207)
+# CpG_island_identificator 
 
 CpG island identification pipeline inspired by the  Gardiner-Garden and Frommer (1987) method 
 
@@ -9,13 +9,13 @@ Windows grafical user interface standalone programs is avaliable here: [![DOI](h
 ![](img/program_gui.png)
 
 # **Binaries**
-The binary files for the windows and linux command line programs can be found: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5907900.svg)](https://doi.org/10.5281/zenodo.5907900) (no depedences needed)
+The binary files for the windows and linux command line programs can be found: 
 
 # **Depedences**
 
 1. python3.8 or later
 
-2. argparse: `pip3 install argparse`  
+2. argparse: `pip3 install argparse`(for the command line)  
 
 3. biopython: `pip3 install biopython`
 
@@ -23,12 +23,6 @@ The binary files for the windows and linux command line programs can be found: [
 
 5. Gooey: (for the `gui.py` scripts) `pip install Gooey`
 
-# **Function**
-
-The program gives 2 options:
-
-1. import a single-fasta file and output a txt file
-2. import many single-fasta files from a directory and output to a txt for each single-fasta with the gc content, gc ratio, step and window size as suffix
 
 # **Example code**
 
