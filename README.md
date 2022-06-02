@@ -27,7 +27,7 @@ The binary files for the linux command line program can be found here:
 # **Example code**
 
  With the following script CpG islands are identified by selecting the %GC content, Obs/Exp ratio  window and step size. In this example sequence the existence of CpG islands is checked on 200 bp windows with 50 bp interval(the window moves 50bp each time):  
-`python3 cpg_island_identificator.py -in test.fasta -out cpg_table.txt -win 200 -step 50 -gc 55.00`
+`python3 cpg_island_identificator.py -in test.fasta -out cpg_table.txt -win 200 -step 50 -gc 55.00`  
 This script can be run also as GUI by running:   
 `python3 cpg_island_identificator_gui.py` and a window will pop up
 
