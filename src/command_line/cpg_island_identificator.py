@@ -43,7 +43,7 @@ for record in SeqIO.parse(args['input'], "fasta"):
             gccont.append(gc(record.seq[i:i + args['window']]))
             gcratio.append(ratio(record.seq[i:i + args['window']]))
             start.append(i + 1) # fix python index
-            end.append(args['window']) # retrieve the end position of each putative CpG island
+            end.append(i + args['window']) # retrieve the end position of each putative CpG island
             headers.append(record.id)
             strand.append('+')
 # reverse complement
