@@ -37,7 +37,7 @@ def main():
     features = Fasta(args['input'])
     for key in features.keys():
     # forward sequence
-        for i in range(0, len(features[key]) - args['window'] + 1, args['step']):
+        for i in range(0, features[key][:].end - args['window'] + 1, args['step']):
             if gc(features[key][i:i + args['window']].seq) >= args['gc'] and ratio(features[key][i:i + args['window']].seq) >= args['ratio']:
                 gcobs.append(obs(features[key][i:i + args['window']].seq))
                 gccont.append(gc(features[key][i:i + args['window']].seq))

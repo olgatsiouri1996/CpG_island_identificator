@@ -4,7 +4,7 @@ CpG island identification pipeline inspired by the  Gardiner-Garden and Frommer 
 
 ![](img/arguments.png) 
 
-Windows grafical user interface standalone programs is avaliable here:
+Windows and linux grafical user interface standalone programs is avaliable here:
 
 ![](img/program_gui.png)
 
@@ -13,7 +13,7 @@ The binary files for the linux command line program can be found here:
 
 # **Depedences**
 
-1. python3.10 or later
+1. python3.8 or later
 
 2. argparse: `pip3 install argparse`(for the command line script)  
 
