@@ -13,11 +13,11 @@ The binary files for the linux command line program can be found here:
 
 # **Depedences**
 
-1. python3.8 or later
+1. python3.10 or later
 
 2. argparse: `pip3 install argparse`(for the command line script)  
 
-3. biopython: `pip3 install biopython`
+3. pyfaidx: `pip3 install pyfaidx`
 
 4. pandas: `pip3 install pandas`  
 
