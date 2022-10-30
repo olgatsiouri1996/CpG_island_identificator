@@ -2,14 +2,13 @@
 
 CpG island identification pipeline inspired by the  Gardiner-Garden and Frommer (1987) method 
 
+# **Executable apps**
+
 ![](img/arguments.png) 
 
-Windows and linux grafical user interface standalone programs is avaliable here:
+Windows and linux grafical user interface standalone programs and a linux command line program are avaliable here: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7264177.svg)](https://doi.org/10.5281/zenodo.7264177)
 
 ![](img/program_gui.png)
-
-# **Binaries**
-The binary files for the linux command line program can be found here: 
 
 # **Depedences**
 
